@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\AppFunctions\SensorDataStore;
+use App\Http\Controllers\PushController;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,6 +30,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function() {
             SensorDataStore::store();
         })->everyTenMinutes();
+        $schedule->call(function() {
+            PushController::push();
+        })->dailyAt('07:30');
     }
 
     /**

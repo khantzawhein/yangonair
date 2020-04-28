@@ -2,8 +2,8 @@
 @section('title', 'Home')
 @section('head')
 <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/checkbox.css">
 <link rel="stylesheet" href="css/index.styles.css">
+<link rel="stylesheet" href="css/index.responsive.css">
 @endsection
 @section('content')
 <div class="row justify-content-md-center aqi-main">

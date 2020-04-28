@@ -1,27 +1,22 @@
 .aqi-main {
     background-color: #283547;
     position: relative;
-    padding: 6rem 2rem 6rem 2rem;
 }
 .aqi-main h1 {
     color: white;
     text-align: center;
-    font-size: 4rem;
+    margin-bottom: 1rem;
 }
 .box {
     position: relative;
     top: 10%;
-    height: 250px;
-    width: 430px;
     margin: 0 auto;
     border-radius: 10%;
     padding: 1rem 1rem;
     text-align: center;
     color: white;
 }
-.box h2 {
-    font-size: 4rem;
-}
+
 .burmese {
     font-family: 'Padauk', sans-serif;
 }

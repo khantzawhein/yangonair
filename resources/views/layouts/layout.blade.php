@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{ asset('js/enable-push.js') }}" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href={{ asset("css/styles.css") }}>
     <link rel="icon" href="images/favicon.png" type="image/png">
@@ -18,7 +20,7 @@
         </button>
       
         <div class="collapse navbar-collapse nav-font" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto padding-nav">
+          <ul class="navbar-nav m-auto padding-nav">
             <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
               <a class="nav-link" href="/">Home</a>
             </li>
@@ -40,7 +42,7 @@
             
           </ul>
           <ul class="navbar-nav ml-auto padding-nav">
-            <li class="nav-item"><button class="btn btn-primary">Get Notifcation</button></li>
+            <li class="nav-item"><button onclick="initSW()" class="btn btn-primary notification">Get Notifcation</button></li>
           </ul>
         </div>
       </nav>
