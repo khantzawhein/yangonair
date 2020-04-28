@@ -17,12 +17,14 @@ Route::get('/dashboard', function() {
     return view("welcome");
 });
 
-Auth::routes(['register'=>false]);
-Route::get("/", "IndexController@index");
-Route::get("/maps", "MapController@index")->name('map');
-Route::get("lists", "ListsController@index")->name('lists');
-Route::get("/home", "HomeController@index")->name('home');
-Route::get("/refresh", function() {
+Auth::routes();
+Route::get('HomeController@index', function() {
     SensorDataStore::store();
     return redirect('/');
 });
+Route::get('/', 'IndexController@index');
+Route::get('/maps', 'IndexController@index')->name('map');
+Route::get('lists', 'ListsController@index')->name('lists');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/push', 'PushController@store');
+Route::get('/push', 'PushController@push')->name('push');
