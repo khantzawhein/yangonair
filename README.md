@@ -7,6 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Installation
+
+- `git clone https://github.com/khantzawhein/yangonair.git`
+- `cd yangonair`
+- `cp .env.example .env`
+- `composer install`
+- `php artisan key:generate`
+- `php artisan migrate`
+- (optional) `npm install` and `npm run dev`
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
