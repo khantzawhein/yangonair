@@ -9,6 +9,7 @@
 
 ## Installation
 
+Follow this insturction to run this app.
 - `git clone https://github.com/khantzawhein/yangonair.git`
 - `cd yangonair`
 - `cp .env.example .env`
