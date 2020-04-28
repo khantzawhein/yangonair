@@ -1,0 +1,110 @@
+<?php
+
+namespace App\AppFunctions;
+use Illuminate\Support\Facades\DB;
+
+class SensorFetcher
+{
+    static function fetch($type="overall")
+    {
+        /**
+        * type = overall or sensorData
+        */
+        $sensorData = [];
+        $sensors = DB::select('select * from sensors');
+        $pmValue = [];
+        $overall = [];
+        $avgPM = [];
+        $url = "http://www.purpleair.com/json?show=";
+        $overallavg['pm'] = $overall['aqi'] = 0;
+        foreach ($sensors as $sensor)
+        {   
+            //get pm2.5 values from JSON API for primary and secondary sensors
+
+            $senson_json[$sensor->sensor_id] = json_decode(file_get_contents($url.$sensor->sensor_id), true);
+            $pmValue[$sensor->sensor_id][0] = json_decode($senson_json[$sensor->sensor_id]["results"][0]["Stats"])->pm;
+            $pmValue[$sensor->sensor_id][1] = json_decode($senson_json[$sensor->sensor_id]["results"][1]["Stats"])->pm;
+            
+            // check whether primary or secondary isn't working
+            
+            if ($pmValue[$sensor->sensor_id][0] == 0) 
+            {
+                $avgPM[$sensor->sensor_id] = $pmValue[$sensor->sensor_id][1];
+            }
+            elseif ($pmValue[$sensor->sensor_id][1] == 0) 
+            {
+                $avgPM[$sensor->sensor_id] = $pmValue[$sensor->sensor_id][1];
+            }
+            else
+            {
+                $avgPM[$sensor->sensor_id] = ($pmValue[$sensor->sensor_id][0]+$pmValue[$sensor->sensor_id][1])/2.0;
+            }
+
+            //convert to AQI
+            $sensorData[$sensor->sensor_id]['data'] = self::AQI($avgPM[$sensor->sensor_id]);
+            $sensorData[$sensor->sensor_id]['name'] = $sensor->sensor_name;
+            $sensorData[$sensor->sensor_id]['township'] = $sensor->township;
+
+            //overallavg['pm or aqi'] for all sensors
+            $overallavg['pm'] += $avgPM[$sensor->sensor_id];
+        }
+        if ($type == "sensorData")
+        {
+            return $sensorData;
+        }
+        $overallavg['pm'] /= count($sensors);
+        $overallavg['aqi'] = self::AQI($overallavg['pm']);
+        return $overallavg;
+    }
+    static function overall($sensorData)
+    {
+        
+    }
+
+    static function AQI($pm)
+    {
+        $AQI[] = NULL;
+        if ($pm <= 12.0)
+        {
+            $AQI['value'] = ((50-0)/(12.0-0.0))*($pm-0.0)+0;
+            $AQI['category'] = "Good";
+        }
+        elseif ($pm <= 35.4)
+        {
+            $AQI['value'] = ((100-51)/(35.4-12.1))*($pm-12.1)+51;
+            $AQI['category'] = "Moderate";
+        }
+        elseif ($pm <= 55.4)
+        {
+            $AQI['value'] = ((150-101)/(55.4-35.5))*($pm-35.5)+101;
+            $AQI['category'] = "Unhealthy for Sensitive Groups";
+        }
+        elseif ($pm <= 150.4)
+        {
+            $AQI['value'] = ((200-151)/(150.4-55.5))*($pm-55.5)+151;
+            $AQI['category'] = "Unhealthy";
+        }
+        elseif ($pm <= 250.4)
+        {
+            $AQI['value'] = ((300-201)/(250.4-150.5))*($pm-150.5)+201;
+            $AQI['category'] = "Very Unhealthy";
+        }
+        elseif ($pm <= 350.4)
+        {
+            $AQI['value'] = ((400-301)/(350.4-250.5))*($pm-250.5)+301;
+            $AQI['category'] = "Hazardous";
+        }
+        elseif ($pm <= 500.4)
+        {
+            $AQI['value'] = ((500-401)/(500.4-350.5))*($pm-350.5)+401;
+            $AQI['category'] = "Hazardous";
+        }
+        else
+        {
+            $AQI['value'] = 0;
+            $AQI['category'] = "Something is wrong";
+        }
+        $AQI['value'] = round($AQI['value'],1);
+        return $AQI;
+    }
+}

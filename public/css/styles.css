@@ -1,0 +1,37 @@
+#dropdown-menu{
+    margin-left: -70%;
+}
+.nav-font{
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.1rem;
+}
+.margin-logo{
+    /* margin-left: 0.5rem; */
+    margin-right: 12rem;
+}
+.padding-nav li a{
+    padding-right: 1.2rem!important;
+}
+
+#mapid {
+    height: 500px;
+}
+.container_icon {
+    position: relative;
+}
+.text {
+    text-align: center;
+    display: block;
+}
+.text_container {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+}
+.bgforicon {
+    width: 40px;
+    height: 40px;
+}
+.updatedText {
+    text-align: center;
+}
