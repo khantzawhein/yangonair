@@ -1,0 +1,6 @@
+.loading-data .tab-pane {
+    display: block;
+}
+.sub-nav .nav-link.active {
+    background-color: var(--success);
+}

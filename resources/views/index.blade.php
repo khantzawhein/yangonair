@@ -8,7 +8,7 @@
 @section('content')
 <div class="row justify-content-md-center aqi-main">
     <div class="col-sm-12 ">
-        <h1>Realtime Yangon air quality: </h1>
+        <h1>Current Yangon Air Quality: </h1>
         <div class="box" style="background-color: {{ $colorcode }};  {{ $colorcode == ('#ffff00' ?? '#00e400' ?? '#ff7e00') ? 'color: black' : ''}}">
             <h2>{{ $overall }} AQI</h2>
             <h3>{{ $category['description'] }}</h3>

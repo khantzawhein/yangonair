@@ -18,13 +18,14 @@ Route::get('/dashboard', function() {
 });
 
 Auth::routes();
-Route::get('HomeController@index', function() {
+Route::get('/refresh', function() {
     SensorDataStore::store();
     return redirect('/');
 });
-Route::get('/', 'IndexController@index');
-Route::get('/maps', 'IndexController@index')->name('map');
-Route::get('lists', 'ListsController@index')->name('lists');
+Route::get('/', 'IndexController@index')->name('home');
+Route::get('/charts', 'ChartsController@index')->name('charts');
+Route::get('/maps', 'MapController@index')->name('map');
+Route::get('/data', 'ListsController@index')->name('data');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/push', 'PushController@store');
 Route::get('/push', 'PushController@push')->name('push');

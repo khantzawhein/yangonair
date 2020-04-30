@@ -76,7 +76,7 @@ class helper{
             $category['level'] = 1;
             $category['description'] = "Moderate";
             $category['description_mm'] = "အသင့်အတင့်ကောင်းသည်";
-            $category['notification'] = "Moderate - Acceptable air quality";
+            $category['notification'] = "Acceptable air quality";
         }
         elseif ($AQI <= 150.0)
         {
@@ -90,34 +90,35 @@ class helper{
             $category['level'] = 3;
             $category['description'] = "Unhealthy";
             $category['description_mm'] = "ကျန်းမာရေးအတွက်မကောင်းပါ";
-            $category['notification'] = "Unhealthy - Anyone could experience negative health effects from pollution in the air";
+            $category['notification'] = "Anyone could experience negative health effects from pollution in the air";
         }
         elseif ($AQI <= 300.0)
         {
             $category['level'] = 4;
             $category['description'] = "Very Unhealthy";
             $category['description_mm'] = "ကျန်းမာရေးအတွက် အလွန်မကောင်းပါ";
-            $category['notification'] = "Very Unhealhy - Everyone may experience more serious negative healt effects";
+            $category['notification'] = "Everyone may experience more serious negative healt effects";
         }
         elseif ($AQI <= 400.0)
         {
             $category['level'] = 5;
             $category['description'] = "Hazardous";
             $category['description_mm'] = "အန္တရာယ်အလွန်များသည်";
-            $category['notification'] = "Harzardous - Stay Indoor!, prolonged exposure to outside air may impose health issues";
+            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
         }
         elseif ($AQI <= 500.0)
         {
             $category['level'] = 6;
             $category['description'] = "Hazardous";
             $category['description_mm'] = "အန္တရာယ်အလွန်များသည်";
-            $category['notification'] = "Harzardous - Stay Indoor!, prolonged exposure to outside air may impose health issues";
+            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
         }
         else
         {
             $category['level'] = 7;
             $category['description'] = "AQI is more than 500";
             $category['description_mm'] = "AQI ၅၀၀ ထက်ပိုများနေသည်";
+            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
         }
         return $category;
     }
