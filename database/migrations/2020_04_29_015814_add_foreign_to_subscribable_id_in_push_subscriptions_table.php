@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToPushSubscriptions extends Migration
+class AddForeignToSubscribableIdInPushSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,7 +28,6 @@ class AddForeignKeyToPushSubscriptions extends Migration
     {
         Schema::table('push_subscriptions', function (Blueprint $table) {
             //
-            $table->dropForeign('push_subscription_subscribable_id_foreign');
         });
     }
 }

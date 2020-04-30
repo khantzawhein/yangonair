@@ -39,10 +39,13 @@ class DailyAQI extends Notification
         $aqiDB = aqitemp::orderBy('id', 'desc')->take(1)->get();
         $overall = $aqiDB[0]->overall;
         $category = helper::getCategory($overall);
+        $colorcode = $str = ltrim(helper::getAQIColor($overall), '#');
         $url = url('/');
+        $foregroundColor = ($colorcode == "ffff00" || $colorcode == "00e400" || $colorcode == "ff7e00") ? "000000" : "ffffff";
+        $imageUrl = "https://dummyimage.com/128X128/".$colorcode."/".$foregroundColor.".png&text=".$overall;
         return (new WebPushMessage)
-            ->title('Today\'s AQI is '.$overall)
-            ->icon('/images/favicon.png')
+            ->title('YangonAQI: "'.$category['description'].'"')
+            ->icon($imageUrl)
             ->body($category['notification'])
             ->badge('/images/favicon.png')
             ->data(['url' => $url]);

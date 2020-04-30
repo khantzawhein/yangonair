@@ -1,14 +1,14 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 .box {   
-    height: 250px;
+    height: 270px;
     width: 315px;
 }
 .aqi-main {
     padding: 2.5rem 2rem 8rem 2rem;
 }
 .aqi-main h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 .box h2 {
     font-size: 3rem;

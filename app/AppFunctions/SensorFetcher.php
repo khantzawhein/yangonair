@@ -6,7 +6,7 @@ use App\AppFunctions\helper;
 
 class SensorFetcher
 {
-    static function fetch()
+    static function fetch($type = NULL)
     {
         /**
         * type = overall or sensorData
@@ -42,8 +42,14 @@ class SensorFetcher
                 $avgPM[$sensor->sensor_id] = ($pmValue[$sensor->sensor_id][0]+$pmValue[$sensor->sensor_id][1])/2.0;
             }
 
-            //convert to AQI
-            $sensorData[$sensor->sensor_id] = helper::getAQI($avgPM[$sensor->sensor_id]);
+            //raw or AQI
+            if($type == 'raw') {
+                $sensorData[$sensor->sensor_id] = $avgPM[$sensor->sensor_id];
+            }
+            else {
+                $sensorData[$sensor->sensor_id] = helper::getAQI($avgPM[$sensor->sensor_id]);
+            }
+            
         }
         return $sensorData;
     }

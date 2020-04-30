@@ -25,11 +25,16 @@ class PushController extends Controller
            ['endpoint' => $endpoint]
         );
         $user->updatePushSubscription($endpoint, $key, $token);
-        self::Push();
+        self::LatestPush();
         return response()->json(['success' => true],200);
     }
+
     static function Push() {
         Notification::send(Guest::all(), new DailyAQI);
         return redirect('/');
+    }
+    static function LatestPush() {
+        Notification::send(Guest::orderby('id','desc')->take(1)->get(), new DailyAQI);
+        return;
     }
 }
