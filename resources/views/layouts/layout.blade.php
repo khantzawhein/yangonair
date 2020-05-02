@@ -8,8 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href={{ asset("css/styles.css") }}>
+    <link rel="stylesheet" href={{ asset("css/responsive.css") }}>
     <link rel="icon" href="images/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     @yield('head')
     <title>@yield('title') - YangonAQI - Air Quality Of Yangon</title>
 </head>
@@ -31,14 +33,11 @@
             <li class="nav-item {{ Request::is('charts') ? 'active' : '' }}">
               <a class="nav-link" href="/charts">Charts</a>
             </li>
-            <li class="nav-item {{ Request::is('aqi') ? 'active' : '' }}">
-                <a class="nav-link" href="/aqi">What is AQI?</a>
-            </li>
             <li class="nav-item {{ Request::is('maps') ? 'active' : '' }}">
                 <a class="nav-link" href="/maps">Maps</a>
             </li>
-            <li class="nav-item {{ Request::is('faqs') ? 'active' : '' }}">
-                <a class="nav-link" href="/faqs">FAQs</a>
+            <li class="nav-item {{ Request::is('whatisaqi') ? 'active' : '' }}">
+                <a class="nav-link" href="/whatisaqi">What is AQI?</a>
             </li>
             <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
               <a class="nav-link" href="/about">About</a>

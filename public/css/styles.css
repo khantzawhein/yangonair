@@ -9,7 +9,21 @@
 .padding-nav li a{
     padding-right: 1.2rem!important;
 }
-
+.burmese {
+    font-family: 'Padauk', sans-serif;
+}
+.eng {
+    font-family: 'Open Sans', sans-serif;
+}
+.bold {
+    font-weight: bold;
+}
+.subbold {
+    font-weight: 600;
+}
+.whitespace {
+    white-space: pre-line;
+}
 #mapid {
     height: 500px;
 }

@@ -2,6 +2,7 @@ var notification = document.querySelector(".notification")
 if (self.Notification.permission === "granted") {
     notification.innerHTML = "Subscribed";
     notification.disabled = true;
+    $('.noti-alert-row').hide();
 }
 
 function initSW() {
@@ -99,4 +100,5 @@ function storePushSubscription(pushSubscription) {
         });
         notification.innerHTML = "Subscribed";
         notification.disabled = true;
+        $('.noti-alert').alert('close');
 }
