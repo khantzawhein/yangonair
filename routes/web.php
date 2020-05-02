@@ -17,7 +17,7 @@ Route::get('/dashboard', function() {
     return view("welcome");
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/refresh', function() {
     SensorDataStore::store();
     return redirect('/');
@@ -27,5 +27,8 @@ Route::get('/charts', 'ChartsController@index')->name('charts');
 Route::get('/maps', 'MapController@index')->name('map');
 Route::get('/data', 'ListsController@index')->name('data');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/whatisaqi', function() {
+    return view('whatisaqi');
+})->name('whatisaqi');
 Route::post('/push', 'PushController@store');
 Route::get('/push', 'PushController@push')->name('push');

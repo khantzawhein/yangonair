@@ -104,10 +104,9 @@ class ChartsController extends Controller
                         ],
                         'display' => true,
                         'ticks' => [
-                            'suggestedMin' => 90,
-                            'suggestedMax' => 200
+                            'suggestedMin' => 40,
+                            'suggestedMax' => 250
                         ]
-                        
                         
                     ]
                 ]

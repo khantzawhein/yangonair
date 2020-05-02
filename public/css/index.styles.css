@@ -2,6 +2,23 @@
     background-color: #283547;
     position: relative;
 }
+.aqi-overall {
+    margin-bottom: 3rem;
+}
+.aqi-max {
+    position: relative;
+}
+.aqi-min {
+    position: relative;
+}
+.aqi-max p, .aqi-min p {
+    color: white;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.aqi-advise {
+    padding-top: 2rem;
+}
 .aqi-main h1 {
     color: white;
     text-align: center;
@@ -9,17 +26,25 @@
 }
 .box {
     position: relative;
-    top: 10%;
+    top: 5%;
     margin: 0 auto;
     border-radius: 10%;
+    box-shadow: 0 0px 35px 0 rgba(0, 0, 0, 0.8);
     padding: 1rem 1rem;
     text-align: center;
     color: white;
 }
+.box-small {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 10%;
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.8);
+    text-align: center;
+    color: white;
 
-.burmese {
-    font-family: 'Padauk', sans-serif;
 }
+
+
 .noti-checkbox-container {
     position: relative;
     top: 20%;
@@ -31,4 +56,15 @@
 .noti-label {
     color: black;
     position: relative;
+}
+.noti-alert-row .alert {
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.burmese p {
+    font-size: 1.2rem;
+}
+.aqi-advise p {
+    white-space: pre-line;
 }
