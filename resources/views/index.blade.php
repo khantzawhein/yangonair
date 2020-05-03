@@ -25,7 +25,7 @@
             <p class="updatedText">Updated {{ $updated_at }}.</p>
         </div>
     </div>
-    <div class="col-3  ml-auto">
+    <div class="col-4 m-auto">
         <div class="aqi-max">
             <p>Today's Max:</p>
             <div class="box-small" style="background-color: {{ $maxColor }};  {{ $maxColor == ('#ffff00' ?? '#00e400' ?? '#ff7e00') ? 'color: black' : ''}}">
@@ -33,7 +33,15 @@
             </div>
         </div>
     </div>
-    <div class="col-3 mr-auto">
+    <div class="col-4 m-auto">
+        <div class="aqi-avg">
+            <p>Today Avg:</p>
+            <div class="box-small" style="background-color: {{ $avgColor }};  {{ $avgColor == ('#ffff00' ?? '#00e400' ?? '#ff7e00') ? 'color: black' : ''}}">
+                <h2>{{ $avgAQI }} AQI</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 mr-auto">
         <div class="aqi-min">
             <p>Today Min:</p>
             <div class="box-small" style="background-color: {{ $minColor }};  {{ $minColor == ('#ffff00' ?? '#00e400' ?? '#ff7e00') ? 'color: black' : ''}}">
@@ -42,8 +50,7 @@
         </div>
     </div>
 </div>
-
-<div class="row aqi-advise">
+<div class="row aqi-advise secondary-background">
     <div class="col-sm-12 mb-4">
     <h2 class="eng bold" style="text-align: center;">So, What's Next?</h2></div>
     @if($category['level'] == 0)
@@ -151,4 +158,23 @@
     <div class="col-sm-6 border-two-col"><p class="eng">You can read more about AQI and PM2.5 <a href="whatisaqi">here</a></p></div>
     <div class="col-sm-6"><p class="burmese">AQI နဲ့ PM2.5 အကြောင်းကို <a href="whatisaqi">ဒီမှာ</a> လေ့လာဖတ်ရှုလို့ရပါတယ်</p></div>
 </div>
+<div class="row border-top secondary-background">
+    <div class="col-sm-6 border-two-col eng pt-3">
+        <h4 class="subbold">
+            How YangonAQI works?
+        </h4>
+        <p>
+            YangonAQI works by taking data from <a href="https://www.purpleair.com">PurpleAir</a>'s sensors. There are 11 sensors currently in Yangon. We take raw PM2.5 values from each sensors, convert them to AQI and find average of these values. That way, we can show realtime AQI values to users.
+        </p>
+    </div>
+    <div class="col-sm-6 burmese pt-3">
+        <h4 class="subbold">
+            Yangon AQI ဘယ်လိုအလုပ်လုပ်ပါသလဲ
+        </h4>
+        <p>
+            YangonAQI works by taking data from <a href="https://www.purpleair.com">PurpleAir</a>'s sensors. There are 11 sensors currently in Yangon. We take raw PM2.5 values from each sensors, convert them to AQI and find average of these values. That way, we can show realtime AQI values to users.
+        </p>
+    </div>
+</div>
+
 @endsection
