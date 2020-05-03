@@ -18,6 +18,7 @@ class IndexController extends Controller
         $today = Carbon::today();
         $maxAQI = aqitemp::where('created_at', '>=', $today)->max('overall');
         $minAQI = aqitemp::where('created_at', '>=', $today)->min('overall');
+        $avgAQI = round(aqitemp::where('created_at', '>=', $today)->avg('overall'));
         if ($aqiDB->count() == 0)
         {
             SensorDataStore::store();
@@ -35,9 +36,10 @@ class IndexController extends Controller
         $colorCode = helper::getAQIColor($overall);
         $minColor = helper::getAQIColor($minAQI);
         $maxColor = helper::getAQIColor($maxAQI);
+        $avgColor = helper::getAQIColor($avgAQI);
         $category = helper::getCategory($overall);
         return view("index",compact(
-            ["overall", "category", "colorCode", "maxAQI", "minAQI",
-             "updated_at", "maxColor", "minColor"]));
+            ["overall", "category", "colorCode", "maxAQI", "minAQI", 
+            "avgAQI", "updated_at", "maxColor", "minColor", "avgColor"]));
     }
 }

@@ -1,17 +1,14 @@
 .aqi-main {
-    background-color: #283547;
+    background-color: #03A9F4;
     position: relative;
 }
 .aqi-overall {
     margin-bottom: 3rem;
 }
-.aqi-max {
+.aqi-max, .aqi-avg, .aqi-min {
     position: relative;
 }
-.aqi-min {
-    position: relative;
-}
-.aqi-max p, .aqi-min p {
+.aqi-max p, .aqi-min p, .aqi-avg p {
     color: white;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -43,8 +40,6 @@
     color: white;
 
 }
-
-
 .noti-checkbox-container {
     position: relative;
     top: 20%;
@@ -67,4 +62,8 @@
 }
 .aqi-advise p {
     white-space: pre-line;
+}
+.secondary-background {
+    background-color: #0288D1;
+    color: white;
 }

@@ -57,14 +57,7 @@ class helper{
     static function getCategory($AQI)
     {
         $category = [];
-        if ($AQI == 0) 
-        {
-            $category['level'] = -1;
-            $category['description'] = "ERR";
-            $category['description_mm'] = "တစ်ခုခုလွဲနေသည်";
-            $category['notification'] = "Error";
-        }
-        else if ($AQI <= 50.0)
+        if ($AQI <= 50.0)
         {
             $category['level'] = 0;
             $category['description'] = "Good";

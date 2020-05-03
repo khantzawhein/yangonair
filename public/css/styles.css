@@ -5,7 +5,9 @@
     font-family: 'Varela Round', sans-serif;
     font-size: 1.1rem;
 }
-
+.logo {
+    width: 70%;
+}
 .padding-nav li a{
     padding-right: 1.2rem!important;
 }

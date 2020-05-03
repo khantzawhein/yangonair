@@ -20,6 +20,7 @@ class CreateSensorsTable extends Migration
             $table->string('township');
             $table->decimal('lat',10, 8);
             $table->decimal('long', 11, 8);
+            $table->string('api_vendor');
             $table->string('api_url');
         });
     }
