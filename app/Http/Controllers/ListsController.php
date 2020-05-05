@@ -9,6 +9,9 @@ use App\sensor;
 use App\AppFunctions\helper;
 use App\Raw;
 use Carbon\Carbon;
+use App\Exports\AQIExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\AppFunctions\LangSwitcher;
 class ListsController extends Controller
 {
     //
@@ -19,6 +22,7 @@ class ListsController extends Controller
     protected $rawPM = [];
     function index()
     {
+        $lang = LangSwitcher::switch();   
         $this->getAQIDB();
         $this->getRawDB();
         $carbonDate = Carbon::parse($this->updateTime);
@@ -29,7 +33,11 @@ class ListsController extends Controller
                               'colorcode' => $this->colorcode,
                               'updated_at' => $updated_at,
                               'sensorDB' => $sensorDB,
-                              'rawPM' => $this->rawPM]);
+                              'rawPM' => $this->rawPM,
+                              'lang' => $lang]);
+    }
+    function export() {
+        return Excel::download(new AQIExport, 'AQIs.xlsx');
     }
     function getAQIDB()
     {

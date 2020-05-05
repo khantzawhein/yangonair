@@ -7,13 +7,14 @@ use App\AppFunctions\SensorDataStore;
 use App\AppFunctions\helper;
 use App\aqitemp;
 use Carbon\Carbon;
+use App\AppFunctions\LangSwitcher;
 
 class IndexController extends Controller
 {
     //
-    
     function index()
-    {
+    { 
+        $lang = LangSwitcher::switch();   
         $aqiDB = aqitemp::orderBy('id', 'desc')->take(1)->get();
         $today = Carbon::today();
         $maxAQI = aqitemp::where('created_at', '>=', $today)->max('overall');
@@ -32,7 +33,7 @@ class IndexController extends Controller
             $overall = $row->overall;
         }
         $carbonDate = Carbon::parse($updateTime);
-        $updated_at = $carbonDate->diffForHumans();
+        $updated_at = $carbonDate->locale($lang)->diffForHumans();
         $colorCode = helper::getAQIColor($overall);
         $minColor = helper::getAQIColor($minAQI);
         $maxColor = helper::getAQIColor($maxAQI);

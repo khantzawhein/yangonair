@@ -22,6 +22,9 @@
                     <div class="col-md-11 mt-3">
                         {!! $overallChart->container() !!}
                     </div>
+                    <div class="col-md-12">
+                        {!! $sensorsLineChart->container() !!}
+                    </div>
                 </div>
                 
             </div>
@@ -63,6 +66,7 @@
 {!! $overallChart->script() !!}
 {!! $sensorsBarChart->script() !!}
 {!! $categoryPieChart->script() !!}
+{!! $sensorsLineChart->script() !!}
 <script>
 $(window).on('load', function() {
     setTimeout(() => {

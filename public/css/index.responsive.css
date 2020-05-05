@@ -1,10 +1,13 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 .box {   
-    width: 80%;
+    width: 78%;
+}
+.logo {
+    width: 60%;
 }
 .aqi-main {
-    padding: 1.5rem 0.2rem 0.7rem 0.2rem;
+    padding: 1.5rem 0.2rem 3rem 0.2rem;
 }
 .aqi-main h1 {
     font-size: 1.6rem;
@@ -15,8 +18,11 @@
 .box h3 {
     font-size: 1.2rem;
 }
+.aqi-small-title {
+    font-size: 0.8rem;
+}
 .box-small {
-    width: 65%;
+    width: 80%;
     height: 40px;
     padding: 0.5rem 0.5rem;
 }
@@ -32,10 +38,10 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) { 
 .box {   
-    width: 70%;
+    width: 63%;
 }
 .aqi-main {
-    padding: 3rem 2rem 0.7rem 2rem;
+    padding: 3rem 2rem 3rem 2rem;
 }
 .aqi-main h1 {
     font-size: 2rem;
@@ -63,10 +69,10 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .box {   
-        width: 40%;
+        width: 32%;
     }
     .aqi-main {
-        padding: 3rem 2rem 1rem 2rem;
+        padding: 3rem 2rem 3rem 2rem;
     }
     .aqi-main h1 {
         font-size: 3.2rem;
@@ -85,12 +91,15 @@
     .box-small h2 {
         font-size: 1.4rem;
     }
+    .aqi-small-title {
+        font-size: 1rem;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .box {   
-        width: 34%;
+        width: 27%;
     }
     .aqi-main {
         padding: 3rem 2rem 3rem 2rem;
