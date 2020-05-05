@@ -1,3 +1,6 @@
+.table-container {
+  margin-bottom: 1rem;
+}
 .table100 {
     background-color: #fff;
   }
@@ -11,7 +14,7 @@
   }
   
   .column1 {
-    width: 30%;
+    width: 25%;
     padding-left: 40px;
   }
   
@@ -20,15 +23,17 @@
   }
   
   .column3 {
-    width: 12%;
+    width: 25%;
+    text-align: center;
   }
   
   .column4 {
     width: 12%;
+    text-align: center;
   }
   
   .column5 {
-    width: 31%;
+    width: 28%;
   }
   
   .table100-head th {
@@ -63,12 +68,14 @@
   
   /*==================================================================
   [ Ver1 ]*/
-  
+  :lang(mm) .table100.table100.ver1 th, :lang(mm) .table100.ver1 td{
+    font-family: 'Pyidaungsu', sans-serif;
+  }
   .table100.ver1 th {
     font-family: Lato;
     font-weight: 600;
-    font-size: 18px;
-    color: #fa4251;
+    font-size: 1rem;
+    color: #039be5;
     line-height: 1.4;
   
     background-color: transparent;

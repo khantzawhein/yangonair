@@ -1,9 +1,45 @@
+@font-face {
+    font-family: 'Pyidaungsu';
+    src: url(../fonts/Pyidaungsu_Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'PyiDaungSu';
+    src: url(../fonts/Pyidaungsu_Bold.ttf);
+    font-weight: 700;
+}
 #dropdown-menu{
     margin-left: -70%;
 }
+.navbar {
+    transition: 0.5s ease;
+}
+.logo {
+    transition: 0.5s ease;
+}
+:lang(en) .nav-font {
+    font-family: 'Poppins', sans-serif;
+}
+:lang(mm) .nav-font {
+    font-family: 'Pyidaungsu', sans-serif;
+}
 .nav-font{
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.1rem;
+    
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #000000
+}
+.navbar .active .nav-link {
+    color: #039BE5 !important; 
+}
+.navbar .nav-link {
+    color: rgba(0, 0, 0, 0.75) !important;
+    transition: 0.7s ease all;
+}
+.navbar .nav-link:hover {
+    color: rgba(3, 155, 229, 0.7) !important;
+    transition: 0.7s ease all;
 }
 .logo {
     width: 70%;
@@ -12,7 +48,7 @@
     padding-right: 1.2rem!important;
 }
 .burmese {
-    font-family: 'Padauk', sans-serif;
+    font-family: 'Pyidaungsu', sans-serif;
 }
 .eng {
     font-family: 'Open Sans', sans-serif;
@@ -44,6 +80,10 @@
 .bgforicon {
     width: 40px;
     height: 40px;
+}
+:lang(mm) .updatedText {
+    font-family: 'Pyidaungsu', sans-serif;
+    text-align: center;
 }
 .updatedText {
     text-align: center;

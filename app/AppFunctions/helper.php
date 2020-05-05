@@ -60,58 +60,58 @@ class helper{
         if ($AQI <= 50.0)
         {
             $category['level'] = 0;
-            $category['description'] = "Good";
+            $category['description'] = __('index.good');
             $category['description_mm'] = "ကောင်းသည်";
-            $category['notification'] = "Clean Air - Enjoy your day with healthy air";
+            $category['notification'] = __('notification.noti_good');
         }
         elseif ($AQI <= 100.0)
         {
             $category['level'] = 1;
-            $category['description'] = "Moderate";
+            $category['description'] = __('index.moderate');
             $category['description_mm'] = "အသင့်အတင့်ကောင်းသည်";
-            $category['notification'] = "Acceptable air quality";
+            $category['notification'] = __('notification.noti_moderate');
         }
         elseif ($AQI <= 150.0)
         {
             $category['level'] = 2;
-            $category['description'] = "Unhealthy for Sensitive Groups";
+            $category['description'] = __('index.unhealthySensitive');
             $category['description_mm'] = "ထိခိုက်လွယ်သော သူများအတွက် မကောင်းပါ";
-            $category['notification'] = "People unusually sensitive to air pollution and children should reduce or reschedule outdoor activities.";
+            $category['notification'] = __('notification.noti_unhealthySensitive');
         }
         elseif ($AQI <= 200.0)
         {
             $category['level'] = 3;
-            $category['description'] = "Unhealthy";
+            $category['description'] = __('index.unhealthy');
             $category['description_mm'] = "ကျန်းမာရေးအတွက်မကောင်းပါ";
-            $category['notification'] = "Anyone could experience negative health effects from pollution in the air";
+            $category['notification'] = __('notification.noti_unhealthy');
         }
         elseif ($AQI <= 300.0)
         {
             $category['level'] = 4;
-            $category['description'] = "Very Unhealthy";
+            $category['description'] = __('index.veryunhealthy');
             $category['description_mm'] = "ကျန်းမာရေးအတွက် အလွန်မကောင်းပါ";
-            $category['notification'] = "Everyone may experience more serious negative healt effects";
+            $category['notification'] = __('notification.noti_veryhealthy');
         }
         elseif ($AQI <= 400.0)
         {
             $category['level'] = 5;
-            $category['description'] = "Hazardous";
+            $category['description'] = __('index.hazardous');
             $category['description_mm'] = "အန္တရာယ်အလွန်များသည်";
-            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
+            $category['notification'] = __('notification.noti_hazardous');
         }
         elseif ($AQI <= 500.0)
         {
             $category['level'] = 6;
             $category['description'] = "Hazardous";
             $category['description_mm'] = "အန္တရာယ်အလွန်များသည်";
-            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
+            $category['notification'] = __('notification.noti_hazardous');
         }
         else
         {
             $category['level'] = 7;
             $category['description'] = "AQI is more than 500";
             $category['description_mm'] = "AQI ၅၀၀ ထက်ပိုများနေသည်";
-            $category['notification'] = "Stay Indoor!, prolonged exposure to outside air may impose health issues";
+            $category['notification'] = __('notification.noti_hazardous');
         }
         return $category;
     }

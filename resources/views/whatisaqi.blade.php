@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 @endsection
 @section('content')
-<div class="row pt-3">
+<div class="row pt-3 whatis-container">
     <div class="col-sm-6 border-two-col">
         <h4 class="eng bold whatis-title">AQI? PM2.5?</h4>
         <p class="eng-1">An air quality index (AQI) is used by government agencies to communicate to the public how polluted the air currently is or how polluted it is forecast to become. Public health risks increase as the AQI rises. </p>

@@ -4,8 +4,9 @@ if (self.Notification.permission === "granted") {
     notification.disabled = true;
     $('.noti-alert-row').hide();
 }
-
-function initSW() {
+var lang = 'en';
+function initSW(locale) {
+    lang = locale;
     if (!('serviceWorker' in navigator)) {
         // Service Worker isn't supported on this browser, disable or hide UI.
         return;
@@ -86,7 +87,8 @@ function storePushSubscription(pushSubscription) {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'X-CSRF-Token': token
+            'X-CSRF-Token': token,
+            'locale': lang
         }
     })
         .then((res) => {

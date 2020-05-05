@@ -13,28 +13,35 @@ class PushController extends Controller
 {
     //
     function store(Request $request) {
+        $locale = $request->header('locale');
+        if (! in_array($locale, ['en', 'my_MM'])) {
+            abort(400);
+        } 
         $this->validate($request,[
             'endpoint'    => 'required',
             'keys.auth'   => 'required',
-            'keys.p256dh' => 'required'
+            'keys.p256dh' => 'required',
         ]);
         $endpoint = $request->endpoint;
         $token = $request->keys['auth'];
         $key = $request->keys['p256dh'];
-        $user = Guest::firstOrCreate(
-           ['endpoint' => $endpoint]
-        );
+        $user = Guest::firstOrNew(['endpoint' => $endpoint]);
+        $user->lang = $locale;
+        $user->save();
         $user->updatePushSubscription($endpoint, $key, $token);
-        self::LatestPush();
-        return response()->json(['success' => true],200);
+        self::LatestPush($locale);
+        return response()->json(['success' => true,'locale' => $locale],200);
     }
 
     static function Push() {
-        Notification::send(Guest::all(), new DailyAQI);
+        $guests = Guest::all();
+        foreach ($guests as $guest) {
+            Notification::locale($guest->lang)->send($guest, new DailyAQI);
+        }
         return redirect('/');
     }
-    static function LatestPush() {
-        Notification::send(Guest::orderby('id','desc')->take(1)->get(), new DailyAQI);
+    static function LatestPush($locale) {
+        Notification::locale($locale)->send(Guest::orderby('id','desc')->take(1)->get(), new DailyAQI);
         return;
     }
 }
