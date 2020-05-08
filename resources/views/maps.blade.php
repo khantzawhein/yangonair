@@ -14,7 +14,7 @@
 
 
 <div class="row justify-content-md-center">
-    <div class="col">
+    <div class="col mt-3">
         <div id="mapid"></div>
     </div>
 </div>

@@ -12,18 +12,8 @@
     font-weight: 500;
     padding: 9% 0;
 }
-.whatis-container {
+.about-container {
     background: rgba(238, 238, 238,1);
-}
-.border-top {
-    border-color: rgba(0, 0, 0, 0.4)!important;
-}
-.question-container , .answer-container {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-.eng-varela {
-    font-family: 'Varela Round', sans-serif;
 }
 :lang(mm) .lang{
     font-family: 'Pyidaungsu', sans-serif;
@@ -31,11 +21,30 @@
 :lang(en) .lang {
     font-family: 'Varela Round', sans-serif;
 }
-.question {
-    padding-left: 40px;
+.heading {
     font-size: 2.1rem;
 }
-.answer {
-    font-size: 1.05rem;
+.team-container {
+    padding-top: 2rem;
+}
+.name {
+    margin-top: 0.6rem;
+    margin-bottom: 0.2rem;
+}
+.description {
+    margin-bottom: 0.2rem;
+}
+.about-text {
+    padding-top: 1.2rem;
     line-height: 1.8;
+}
+.contact {
+    line-height: 1.8;
+}
+:lang(mm) .about-text {
+    font-size: 1.05rem;
+}
+.about-text-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.8rem;
 }

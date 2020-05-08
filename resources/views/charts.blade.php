@@ -9,10 +9,10 @@
     <div class="col-md-12">
         <ul class="nav nav-tabs nav-fill nav-pills" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="overallchart-tab" data-toggle="tab" href="#overallchart" role="tab" aria-controls="overallchart" aria-selected="true">Overall</a>
+              <a class="nav-link active" id="overallchart-tab" data-toggle="tab" href="#overallchart" role="tab" aria-controls="overallchart" aria-selected="true">{{ __('charts.overall') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="sensorchart-tab" data-toggle="tab" href="#sensorchart" role="tab" aria-controls="sensorchart" aria-selected="false">By each sensors</a>
+              <a class="nav-link" id="sensorchart-tab" data-toggle="tab" href="#sensorchart" role="tab" aria-controls="sensorchart" aria-selected="false">{{ __('charts.byeachsensors') }}</a>
             </li>
             
         </ul>
@@ -33,10 +33,10 @@
                     <div class="col-md-10 mt-1">
                         <ul class="nav nav-tabs nav-pills nav-fill sub-nav" id="myTab" role="tablist">
                             <li class="nav-item">
-                              <a class="nav-link active" id="realtimesensor-tab" data-toggle="tab" href="#realtimesensor" role="tab" aria-controls="realtimesensor" aria-selected="true">Realtime AQI</a>
+                              <a class="nav-link active" id="realtimesensor-tab" data-toggle="tab" href="#realtimesensor" role="tab" aria-controls="realtimesensor" aria-selected="true">{{ __('charts.RealtimeAQI') }}</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="bycategory-tab" data-toggle="tab" href="#bycategory" role="tab" aria-controls="bycategory" aria-selected="false">By category</a>
+                              <a class="nav-link" id="bycategory-tab" data-toggle="tab" href="#bycategory" role="tab" aria-controls="bycategory" aria-selected="false">{{ __('charts.ByCategory') }}</a>
                             </li>
                           </ul>
                           <div class="tab-content loading-data" id="myTabContent">
