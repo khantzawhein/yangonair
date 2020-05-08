@@ -21,21 +21,18 @@ Auth::routes(['register' => false]);
 Route::get('/refresh', function() {
     SensorDataStore::store();
     return redirect('/');
-});
+})->middleware('auth');
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/charts', 'ChartsController@index')->name('charts');
 Route::get('/maps', 'MapController@index')->name('map');
 Route::get('/data', 'ListsController@index')->name('data');
 Route::get('/data/download', 'ListsController@export')->middleware('throttle:5,1')->name('download');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('whatisaqi', function() {
-    LangSwitcher::switch();
-    return view('whatisaqi');
-})->name('whatisaqi');
+Route::get('whatisaqi', 'WhatisAQIController@index')->name('whatisaqi');
 Route::get('/about', function() {
     LangSwitcher::switch();
     return view('about');
 });
 Route::post('/push', 'PushController@store');
-Route::get('/push', 'PushController@push')->name('push');
+Route::get('/push', 'PushController@push')->name('push')->middleware('auth');
 Route::post('/lang', 'langController@switch')->name('lang');

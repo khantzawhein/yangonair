@@ -48,7 +48,7 @@ body {
   display: inline-block;
   width: 120px;
   height: 120px;
-  background-image: url('images/emoji.png');
+  background-image: url({{ asset('images/emoji.png') }});
   background-size: cover;
   -webkit-transform: scale(1.4);
       -ms-transform: scale(1.4);
@@ -109,7 +109,7 @@ body {
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>404 - Not Found</title>
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">
 

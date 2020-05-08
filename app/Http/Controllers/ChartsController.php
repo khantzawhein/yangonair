@@ -46,7 +46,7 @@ class ChartsController extends Controller
         }
         $chart = new chartjs();
         $chart->labels($labels);
-        $chart->title('Sensors AQI in Last 24 hours');
+        $chart->title(__('charts.SensorAQI24Hr'));
         $chart->dataset($names[0],'line', $sensor0)->fill(false)->color('#F2545B')->custom('#F2545B');
         $chart->dataset($names[1],'line', $sensor1)->fill(false)->color('#FDCA40')->custom('#FDCA40');
         $chart->dataset($names[2],'line', $sensor2)->fill(false)->color('#3772FF')->custom('#3772FF');
@@ -117,7 +117,7 @@ class ChartsController extends Controller
             'title' => [
                 'display' => true,
                 'fontSize' => 20,
-                'text' => 'Realtime AQI categories counts for each sensors'
+                'text' => __('charts.CategoryChart')
             ]
         ]);
         return $chart;
@@ -147,7 +147,7 @@ class ChartsController extends Controller
             'title' => [
                 'display' => true,
                 'fontSize' => 20,
-                'text' => 'Realtime AQI Values for each sensors'
+                'text' => __('charts.RealtimeAQISensor')
             ],
             'scales' => [
                 'yAxes' => [
@@ -199,7 +199,7 @@ class ChartsController extends Controller
             'title' => [
                 'display' => true,
                 'fontSize' => 20,
-                'text' => "Overall Yangon's AQI values in last 24 hours"
+                'text' => __('charts.overallChart_title')
             ],
             'scales' => [
                 'yAxes' => [
