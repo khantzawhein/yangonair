@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'facebook_poster' => [
+        'client_id' => getenv('FACEBOOK_APP_ID'),
+        'client_secret' => getenv('FACEBOOK_APP_SECRET'),
+        'access_token' => getenv('FACEBOOK_ACCESS_TOKEN'),
+    ],
 
 ];

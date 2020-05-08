@@ -36,3 +36,4 @@ Route::get('/about', function() {
 Route::post('/push', 'PushController@store');
 Route::get('/push', 'PushController@push')->name('push')->middleware('auth');
 Route::post('/lang', 'langController@switch')->name('lang');
+Route::get('/fbupdate', 'FacebookAQIPostController@post')->name('post')->middleware('auth');

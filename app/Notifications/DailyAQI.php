@@ -36,7 +36,7 @@ class DailyAQI extends Notification
 
     public function toWebPush($notifiable, $notification)
     {
-        $aqiDB = aqitemp::orderBy('id', 'desc')->take(1)->get();
+        $aqiDB = aqitemp::select('overall')->orderBy('id', 'desc')->take(1)->get();
         $overall = $aqiDB[0]->overall;
         $category = helper::getCategory($overall);
         $colorcode = $str = ltrim(helper::getAQIColor($overall), '#');
