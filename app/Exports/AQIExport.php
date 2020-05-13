@@ -20,7 +20,7 @@ class AQIExport implements FromCollection, WithHeadings, WithMapping, WithColumn
     */
     public function collection()
     {   
-        $db = aqitemp::all();
+        $db = aqitemp::take(1000)->get();
         $db->transform(function ($item) {
             unset($item->updated_at);
             return $item;

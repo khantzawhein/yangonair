@@ -18,10 +18,6 @@ Route::get('/dashboard', function() {
 });
 
 Auth::routes(['register' => false]);
-Route::get('/refresh', function() {
-    SensorDataStore::store();
-    return redirect('/');
-})->middleware('auth');
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/charts', 'ChartsController@index')->name('charts');
 Route::get('/maps', 'MapController@index')->name('map');
@@ -34,5 +30,13 @@ Route::get('/about', function() {
     return view('about');
 });
 Route::post('/push', 'PushController@store');
-Route::get('/push', 'PushController@push')->name('push')->middleware('auth');
+Route::post('/push/now', 'PushController@push')->name('push')->middleware('auth');
 Route::post('/lang', 'langController@switch')->name('lang');
+Route::post('/admin/fb-update', 'FacebookAQIPostController@post')->name('post')->middleware('auth');
+
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::post('/admin/refresh', 'AdminController@refresh')->name('refresh');
+Route::resource('admin/fb-settings', 'FbSettingsController', ['parameters' => [
+    'fb-settings' => 'id'
+]]);
+Route::post('admin/fb-settings/{id}/set-default', 'FbSettingsController@setDefault')->name('set-default-fb');
