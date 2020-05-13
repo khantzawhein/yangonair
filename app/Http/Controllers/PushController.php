@@ -38,7 +38,7 @@ class PushController extends Controller
         foreach ($guests as $guest) {
             Notification::locale($guest->lang)->send($guest, new DailyAQI);
         }
-        return redirect('/');
+        return redirect()->back();
     }
     static function LatestPush($locale) {
         Notification::locale($locale)->send(Guest::orderby('id','desc')->take(1)->get(), new DailyAQI);

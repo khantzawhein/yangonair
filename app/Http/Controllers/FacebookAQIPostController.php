@@ -13,7 +13,7 @@ class FacebookAQIPostController extends Controller
     {
         $aqilatest = aqitemp::select('overall')->orderBy('id', 'desc')->take(1)->get();
         $aqilatest[0]->notify(new FacebookAQIPost);
-        return redirect('/');
+        return redirect()->back();
     }
     
     

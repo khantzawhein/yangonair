@@ -4,13 +4,13 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\FacebookPoster\FacebookPosterChannel;
 use NotificationChannels\FacebookPoster\FacebookPosterPost;
 use App\AppFunctions\helper;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use App\FbPostTemplate;
 
 class FacebookAQIPost extends Notification
 {
@@ -44,30 +44,42 @@ class FacebookAQIPost extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     function postWriter($overall) {
-        App::setLocale('my_MM');
         $category = helper::getCategory($overall);
         $timeMM = Carbon::now()->locale('my_MM')->isoFormat('A Oh:Om');
-        // $timeEN = Carbon::now()->locale('en')->isoFormat('h:m A');
+        $timeEN = Carbon::now()->locale('en')->isoFormat('h:m A');
         if ($category['level'] == 0) {
-            $advise = __('index.advise_good');
+            $DB = FbPostTemplate::where('category', "Good")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
         else if ($category['level'] == 1) {
-            $advise = __('index.advise_moderate');
+            $DB = FbPostTemplate::where('category', "Moderate")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
         else if ($category['level'] == 2) {
-            $advise = __('index.advise_unhealthy_sensitive');
+            $DB = FbPostTemplate::where('category', "UnhealthyForSensitiveGroups")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
         else if ($category['level'] == 3) {
-            $advise = __('index.advise_unhealthy');
+            $DB = FbPostTemplate::where('category', "Unhealthy")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
         else if ($category['level'] == 4) {
-            $advise = __('index.advise_very_unhealthy');
+            $DB = FbPostTemplate::where('category', "VeryUnhealthy")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
         else if ($category['level'] == 5) {
-            $advise = __('index.advise_hazardous');
+            $DB = FbPostTemplate::where('category', "Hazardous")->where('is_default', true)->first();
+            $templateEN = $DB->template_en;
+            $templateMM = $DB->template_my_MM;
         }
-        $advise = trim(preg_replace("/\s+/", '', $advise));
-        $content = __('fbpost.title',['timeMM'=>$timeMM, 'aqivalue' => $overall])."\r\n". $category['description'] . "\r\n". $advise . "\r\n" .__('fbpost.footer');
+        $templateEN = str_replace([':timeEN', ':aqivalue'], [$timeEN, $overall], $templateEN);
+        $templateMM = str_replace([':timeMM', ':aqivalue'], [$timeMM, $overall], $templateMM);
+        $content = $templateMM . "\r\n\r\n" . $templateEN;
         return $content;
     }
     

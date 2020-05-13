@@ -28,6 +28,7 @@ class AddLangColumnToGuestsTable extends Migration
     {
         Schema::table('guests', function (Blueprint $table) {
             //
+            $table->dropColumn('lang');
         });
     }
 }
