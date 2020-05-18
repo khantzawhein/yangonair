@@ -73,7 +73,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>
@@ -120,7 +120,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>
@@ -167,7 +167,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>
@@ -214,7 +214,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>
@@ -261,7 +261,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>
@@ -308,7 +308,7 @@
                                                 </form>
                                                 <button @if (!$defaults->contains($template->id))onclick="confirmDefault({{ $template->id }})" @endif  class="btn  float-left mr-2 {{ ($defaults->contains($template->id)) ? 'btn-success disabled' : 'btn-info' }}"> {{ ($defaults->contains($template->id)) ? 'Default' : 'Set Default' }}</button>
                                                 <button onclick="confirmDelete({{ $template->id }})" class="btn btn-danger float-left mr-2"><i class="fas fa-trash"></i> Delete</button>
-                                                <a href="{{ route('fb-settings.edit', ['id' => $template->id]) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
+                                                <a href="{{ route('fb-settings.edit', $template->id) }}"><button class="btn btn-warning"><i class="far fa-edit"></i> Edit</button></a>
                                                 
                                             </td>
                                         </tr>

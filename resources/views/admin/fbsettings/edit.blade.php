@@ -24,16 +24,16 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="templateEN">Template in English</label>
-                <textarea name="templateEN" id="templateEN" cols="30" rows="10" class="form-control @error('templateEN') is-invalid @enderror" placeholder="Enter text in English">{{ $template->template_en }}</textarea>
-                @error('templateEN')
+                <label for="template_en">Template in English</label>
+                <textarea name="template_en" id="template_en" cols="30" rows="10" class="form-control @error('template_en') is-invalid @enderror" placeholder="Enter text in English">{{ $template->template_en }}</textarea>
+                @error('template_en')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="templateMM">Template in Burmese</label>
-                <textarea name="templateMM" id="templateMM" cols="30" rows="10" class="form-control @error('templateMM') is-invalid @enderror" placeholder="Enter text in Burmese">{{ $template->template_my_MM }}</textarea>
-                @error('templateMM')
+                <label for="template_my_MM">Template in Burmese</label>
+                <textarea name="template_my_MM" id="template_my_MM" cols="30" rows="10" class="form-control @error('template_my_MM') is-invalid @enderror" placeholder="Enter text in Burmese">{{ $template->template_my_MM }}</textarea>
+                @error('template_my_MM')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

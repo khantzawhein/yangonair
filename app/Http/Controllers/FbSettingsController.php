@@ -17,12 +17,11 @@ class FbSettingsController extends Controller
         $this->middleware('auth');
         
     }
-    public function setDefault($id)
+    public function setDefault(FbPostTemplate $template)
     {
-        $DB = FbPostTemplate::findOrFail($id);
-        FbPostTemplate::where('category', $DB->category)->update(['is_default' => false]);
-        $DB->is_default = true;
-        $DB->save();
+        FbPostTemplate::where('category', $template->category)->update(['is_default' => false]);
+        $template->is_default = true;
+        $template->save();
         return redirect(route('fb-settings.index'));
     }
 
@@ -47,7 +46,6 @@ class FbSettingsController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.fbsettings.create');
     }
 
@@ -60,18 +58,7 @@ class FbSettingsController extends Controller
     public function store(Request $request)
     {
         //
-        $validated_data = $request->validate([
-            'name' =>'required',
-            'templateEN' => 'required',
-            'templateMM' => 'required',
-            'category' => 'required'
-        ]);
-        $FB_db = FbPostTemplate::create([
-            'name' => $validated_data['name'],
-            'template_en' => $validated_data['templateEN'],
-            'template_my_MM' => $validated_data['templateMM'],
-            'category' => $validated_data['category']
-        ]);
+        FbPostTemplate::create($this->validateTemplate());
         return redirect(route('fb-settings.index'));
     }
 
@@ -81,10 +68,8 @@ class FbSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FbPostTemplate $template)
     {
-        //
-        $template = FbPostTemplate::findOrFail($id);
         return view('admin.fbsettings.show', compact([
             'template'
         ]));
@@ -96,10 +81,8 @@ class FbSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FbPostTemplate $template)
     {
-        //
-        $template = FbPostTemplate::findOrFail($id);
         return view('admin.fbsettings.edit', compact('template'));
     }
 
@@ -110,21 +93,9 @@ class FbSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FbPostTemplate $template)
     {
-        //
-        $validated_data = $request->validate([
-            'name' => 'required',
-            'templateEN' => 'required',
-            'templateMM' => 'required',
-            'category' => 'required'
-        ]);
-        $template = FbPostTemplate::findOrFail($id);
-        $template->name = $validated_data['name'];
-        $template->template_en = $validated_data['templateEN'];
-        $template->template_my_MM = $validated_data['templateMM'];
-        $template->category = $validated_data['category'];
-        $template->save();
+        $template->update($this->validateTemplate());
         return redirect(route('fb-settings.index'));
     }
 
@@ -137,7 +108,17 @@ class FbSettingsController extends Controller
     public function destroy($id)
     {
         //
-        $FB_db = FbPostTemplate::destroy($id);
+        FbPostTemplate::destroy($id);
         return redirect(route('fb-settings.index'));
+    }
+
+    public function validateTemplate()
+    {
+        return request()->validate([
+            'name' =>'required',
+            'template_en' => 'required',
+            'template_my_MM' => 'required',
+            'category' => 'required'
+        ]);
     }
 }

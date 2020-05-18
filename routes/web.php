@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\AppFunctions\SensorDataStore;
 use App\AppFunctions\LangSwitcher;
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +36,6 @@ Route::post('/admin/fb-update', 'FacebookAQIPostController@post')->name('post')-
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::post('/admin/refresh', 'AdminController@refresh')->name('refresh');
 Route::resource('admin/fb-settings', 'FbSettingsController', ['parameters' => [
-    'fb-settings' => 'id'
+    'fb-settings' => 'template'
 ]]);
-Route::post('admin/fb-settings/{id}/set-default', 'FbSettingsController@setDefault')->name('set-default-fb');
+Route::post('admin/fb-settings/{template}/set-default', 'FbSettingsController@setDefault')->name('set-default-fb');
