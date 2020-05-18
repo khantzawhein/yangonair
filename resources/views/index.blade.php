@@ -130,7 +130,7 @@
 <div class="row">
     <div class="col footer">
       <p class="footer-text">YangonAQI is a project from students of DUCS and CS50x from Harvard.
-        YangonAQI&copy; 2020
+        YangonAQI&copy; 2020 | <a href="{{ route('privacy-policy') }}">Privacy Policy</a>
       </p>
     </div>
   </div>

@@ -39,3 +39,4 @@ Route::resource('admin/fb-settings', 'FbSettingsController', ['parameters' => [
     'fb-settings' => 'template'
 ]]);
 Route::post('admin/fb-settings/{template}/set-default', 'FbSettingsController@setDefault')->name('set-default-fb');
+Route::get('privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy');
