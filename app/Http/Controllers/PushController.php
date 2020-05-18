@@ -14,7 +14,7 @@ class PushController extends Controller
     //
     function store(Request $request) {
         $locale = $request->header('locale');
-        if (! in_array($locale, ['en', 'my_MM'])) {
+        if (!in_array($locale, ['en', 'my_MM'])) {
             abort(400);
         } 
         $this->validate($request,[

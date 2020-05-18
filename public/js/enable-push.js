@@ -4,8 +4,7 @@ if (self.Notification.permission === "granted") {
     notification.disabled = true;
     $('.noti-alert-row').hide();
 }
-var lang = 'en';
-function initSW(locale) {
+function initSW(locale = 'en') {
     lang = locale;
     if (!('serviceWorker' in navigator)) {
         // Service Worker isn't supported on this browser, disable or hide UI.
