@@ -37,7 +37,7 @@
                     <img class="rounded-circle" src="images/myatkoko.jpg" width=30% alt="">
                     <h5 class="name">Myat Ko Ko</h5>
                     <p class="description">First Year Honours, DUCS</p>
-                    <p class="role">Content-Writer, Design</p>
+                    <p class="role">Content-Writer, Loli Artist (¬‿¬)</p>
                 </div>   
             </div>
             <div class="col-sm-4">
