@@ -49,5 +49,7 @@ return [
     'aqi_readmore' => 'AQI နဲ့ PM2.5 အကြောင်းကို <a href="/whatisaqi">ဒီမှာ</a> လေ့လာဖတ်ရှုလို့ရပါတယ်',
     'how_ygnaqi_works_title' => 'YangonAQI ဘယ်လိုအလုပ်လုပ်ပါသလဲ',
 
-    'how_ygnaqi_works_description' => 'YangonAQI သည် <a href="https://www.purpleair.com">PurpleAir</a> ၏ ရန်ကုန်တွင်တပ်ဆင်ထားသော Sensor ၁၁လုံးမှ PM2.5 value များကို ရယူပါသည်။ ထို PM2.5 တန်ဖိုးများကို လေထုအရည်အသွေးညွှန်းကိန်း (AQI) သို့ပြောင်းလဲပြီး ပျှမ်းမျှ ပြန်ရှာခြင်းဖြင့် ယခုလို Realtime AQI ကိုပြသခြင်းဖြစ်ပါသည်။'
+    'how_ygnaqi_works_description' => 'YangonAQI သည် <a href="https://www.purpleair.com">PurpleAir</a> ၏ ရန်ကုန်တွင်တပ်ဆင်ထားသော Sensor ၁၁လုံးမှ PM2.5 value များကို ရယူပါသည်။ ထို PM2.5 တန်ဖိုးများကို လေထုအရည်အသွေးညွှန်းကိန်း (AQI) သို့ပြောင်းလဲပြီး ပျှမ်းမျှ ပြန်ရှာခြင်းဖြင့် ယခုလို Realtime AQI ကိုပြသခြင်းဖြစ်ပါသည်။',
+
+    'find_us_on_fb' => 'Facebook ကနေလဲ Update တွေယူနိုင်ပါတယ်။'
 ];

@@ -3,6 +3,8 @@
 @section('head')
 <link rel="stylesheet" href="css/index.styles.css">
 <link rel="stylesheet" href={{ asset("css/index.responsive.css") }}>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=2519788091572073&autoLogAppEvents=1"></script>
 @endsection
 @section('content')
 <div class="row noti-alert-row">
@@ -117,14 +119,20 @@
     
 </div>
 <div class="row border-top how-aqi-work secondary-background">
-    <div class="col-sm-12 lang pt-3">
-        <h4 class="subbold text-center">
+    <div class="col-sm-6 lang border-two-col pt-3">
+        <h4 class="subbold">
             {{ __('index.how_ygnaqi_works_title') }}
         </h4>
         <p>
             @lang('index.how_ygnaqi_works_description')
         </p>
-        <p class="text-center">@lang('index.aqi_readmore')</p>
+        <p>@lang('index.aqi_readmore')</p>
+    </div>
+    <div class="col-sm-6 pt-3">
+        <h4 class="subbold text-center">
+            {{ __('index.find_us_on_fb') }}
+            <div class="fb-page mt-3" data-href="https://www.facebook.com/YangonAQI/" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/YangonAQI/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/YangonAQI/">Yangon AQI</a></blockquote></div>
+        </h4>
     </div>
 </div>
 <div class="row">

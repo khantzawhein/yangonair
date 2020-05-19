@@ -49,5 +49,7 @@ return [
 
     'how_ygnaqi_works_title' => 'How does YangonAQI work?',
 
-    'how_ygnaqi_works_description' => 'YangonAQI works by taking data from <a href="https://www.purpleair.com">PurpleAir</a>\'s sensors. There are 11 sensors currently in Yangon. We take raw PM2.5 values from each sensors, convert them to AQI and find average of these values. That way, we can show realtime AQI values to users.'
+    'how_ygnaqi_works_description' => 'YangonAQI works by taking data from <a href="https://www.purpleair.com">PurpleAir</a>\'s sensors. There are 11 sensors currently in Yangon. We take raw PM2.5 values from each sensors, convert them to AQI and find average of these values. That way, we can show realtime AQI values to users.',
+
+    'find_us_on_fb' => 'Find us on Facebook.'
 ];

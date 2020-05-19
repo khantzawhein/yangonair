@@ -52,7 +52,7 @@
                 <div class="row pt-4 justify-content-center">
                     <div class="col-sm-4">
                         <div class="person-container text-center">
-                            <img class="rounded-circle" src="images/myatkoko.jpg" width=30% alt="">
+                            <img class="rounded-circle" src="images/nandalinnhtike.jpg" width=30% alt="">
                             <h5 class="name">Nanda Linn Htike</h5>
                             <p class="description">Third Year, DUCS</p>
                             <p class="role">Adviser, Design</p>
