@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\FacebookPoster\FacebookPosterChannel;
 use NotificationChannels\FacebookPoster\FacebookPosterPost;
@@ -11,6 +12,7 @@ use App\AppFunctions\helper;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use App\FbPostTemplate;
+use Intervention\Image\Facades\Image;
 
 class FacebookAQIPost extends Notification
 {
@@ -40,8 +42,8 @@ class FacebookAQIPost extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @param $overall
+     * @return MailMessage
      */
     function postWriter($overall) {
         $category = helper::getCategory($overall);
@@ -79,18 +81,63 @@ class FacebookAQIPost extends Notification
         }
         $templateEN = str_replace([':timeEN', ':aqivalue'], [$timeEN, $overall], $templateEN);
         $templateMM = str_replace([':timeMM', ':aqivalue'], [$timeMM, $overall], $templateMM);
-        $content = $templateMM . "\r\n\r\n" . $templateEN;
-        return $content;
+        return $templateMM . "\r\n\r\n" . $templateEN;
     }
-    
+    public function ImageLoader($overall)
+    {
+        $category = helper::getCategory($overall);
+        $level = $category['level'];
+        $text = $category['description'];
+        $color = '#FFFFFF';
+        $align = 'center';
+        $text_x = 210;
+        $text_y = 610;
+        $title_x = 210;
+        $title_y = 400;
+        $aqi_x = 210;
+        $aqi_y = 510;
+
+        if ($level == 0)
+        {
+            $image = 'loli_good.png';
+        }
+        elseif ($level == 1)
+        {
+            $image = 'loli_moderate.png';
+            $color = array(0,0,0,0.9);
+        }
+        elseif ($level == 2) {
+            $image = 'loli_usg.png';
+            $text = "Unhealthy For\r\nSensitive Groups";
+            $text_x = 50;
+            $text_y = 900;
+            $title_x = 230;
+            $title_y = 400;
+            $aqi_x = 230;
+            $aqi_y = 510;
+            $align = 'left';
+        }
+        elseif ($level == 3)
+        {
+            $image = 'loli_unhealthy.png';
+            $color = array(0,0,0,0.9);
+        }
+        else
+        {
+            $image = 'loli_unhealthy.png';
+            $color = array(0,0,0,0.9);
+        }
+        $this->generateImage($image, $overall, $color, $title_x, $title_y, $text, $align, $text_x, $text_y, $aqi_x, $aqi_y);
+    }
     public function toFacebookPoster($aqidata)
-    {   
+    {
         $overall = $aqidata->overall;
+        $image = $this->ImageLoader($overall);
         $content = $this->postWriter($overall);
         $colorcode =  ltrim(helper::getAQIColor($overall), '#');
         $foregroundColor = ($colorcode == "ffff00" || $colorcode == "00e400" || $colorcode == "ff7e00") ? "000000" : "ffffff";
         $imageUrl = "https://dummyimage.com/800X600/".$colorcode."/".$foregroundColor.".png&text=".$overall;
-        return (new FacebookPosterPost($content))->withImage($imageUrl);
+        return (new FacebookPosterPost($content))->withImage('storage/cache/AQIImage.jpg');
     }
 
     /**
@@ -104,5 +151,49 @@ class FacebookAQIPost extends Notification
         return [
             //
         ];
+    }
+
+    /**
+     * @param $image
+     * @param $overall
+     * @param $color
+     * @param int $title_x
+     * @param int $title_y
+     * @param string $text
+     * @param string $align
+     * @param int $text_x
+     * @param int $text_y
+     * @param int $aqi_x
+     * @param int $aqi_y
+     */
+    public function generateImage($image, $overall, $color, int $title_x, int $title_y, string $text, string $align = 'center', int $text_x, int $text_y, int $aqi_x, int $aqi_y): void
+    {
+        $img = Image::make("images/{$image}");
+        $img->text('Air Quality:', $title_x, $title_y, function ($font) use ($color) {
+            $font->file('fonts/Cabin-Bold.ttf');
+            $font->size(50);
+            $font->color($color);
+            $font->align('center');
+        });
+        $img->text("{$overall} AQI", $aqi_x, $aqi_y, function ($font) use ($color) {
+            $font->file('fonts/Cabin-Bold.ttf');
+            $font->size(105);
+            $font->color($color);
+            $font->align('center');
+        });
+        $img->text("Moderate", $text_x, $text_y, function ($font) use ($color, $align) {
+            $font->file('fonts/Cabin-Bold.ttf');
+            $font->size(47);
+            $font->color($color);
+            $font->align($align);
+        });
+        $img->text('YangonAQI', 970, 40, function ($font) use ($color) {
+            $font->file('fonts/Cabin-Bold.ttf');
+            $font->size(33);
+            $font->align('right');
+            $font->color($color);
+        });
+
+        $img->save('storage/cache/AQIImage.jpg');
     }
 }

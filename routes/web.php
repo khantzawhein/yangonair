@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\AppFunctions\LangSwitcher;
+use Intervention\Image\Facades;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,32 @@ Route::resource('admin/fb-settings', 'FbSettingsController', ['parameters' => [
 ]]);
 Route::post('admin/fb-settings/{template}/set-default', 'FbSettingsController@setDefault')->name('set-default-fb');
 Route::get('privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy');
+
+Route::get('generate', function() {
+    $img = Image::make('images/loli_good.png');
+    $img->text('Air Quality:',210, 400, function($font) {
+        $font->file('fonts/Cabin-Bold.ttf');
+        $font->size(50);
+        $font->color('#FFFFFF');
+        $font->align('center');
+    });
+    $img->text('80 AQI',210, 510, function($font) {
+        $font->file('fonts/Cabin-Bold.ttf');
+        $font->size(106);
+        $font->color('#FFFFFF');
+        $font->align('center');
+    });
+    $img->text("Moderate",210, 610, function($font) {
+        $font->file('fonts/Cabin-Bold.ttf');
+        $font->size(47);
+        $font->color('#FFFFFF');
+        $font->align('center');
+    });
+    $img->text('YangonAQI',970, 40, function($font) {
+        $font->file('fonts/Cabin-Bold.ttf');
+        $font->size(28);
+        $font->align('right');
+        $font->color('#FFFFFF');
+    });
+    return $img->response();
+});
