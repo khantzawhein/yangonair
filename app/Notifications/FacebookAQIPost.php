@@ -132,12 +132,9 @@ class FacebookAQIPost extends Notification
     public function toFacebookPoster($aqidata)
     {
         $overall = $aqidata->overall;
-        $image = $this->ImageLoader($overall);
+        $this->ImageLoader($overall);
         $content = $this->postWriter($overall);
-        $colorcode =  ltrim(helper::getAQIColor($overall), '#');
-        $foregroundColor = ($colorcode == "ffff00" || $colorcode == "00e400" || $colorcode == "ff7e00") ? "000000" : "ffffff";
-        $imageUrl = "https://dummyimage.com/800X600/".$colorcode."/".$foregroundColor.".png&text=".$overall;
-        return (new FacebookPosterPost($content))->withImage('storage/cache/AQIImage.jpg');
+        return (new FacebookPosterPost($content))->withImage('storage/cache/AQIFB.png');
     }
 
     /**
@@ -194,6 +191,6 @@ class FacebookAQIPost extends Notification
             $font->color($color);
         });
 
-        $img->save('storage/cache/AQIImage.jpg');
+        $img->save('storage/cache/AQIFB.png');
     }
 }
