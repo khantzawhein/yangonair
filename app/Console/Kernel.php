@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\FacebookAQIPostController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\AppFunctions\SensorDataStore;
@@ -33,6 +34,12 @@ class Kernel extends ConsoleKernel
         $schedule->call(function() {
             PushController::push();
         })->dailyAt('07:30');
+
+        foreach (['8:00', '12:30', '17:00', '20:30'] as $time) {
+            $schedule->call(function () {
+                FacebookAQIPostController::post();
+            })->dailyAt($time);
+        }
     }
 
     /**
