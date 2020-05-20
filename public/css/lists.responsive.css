@@ -1,33 +1,51 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .table100.ver1 th {
-        font-size: 0.8rem;
+        font-size: 0.86rem;
     }
     .table100 {
         position: relative;
         padding-top: 80px;
+    }
+    .column1 {
+        padding-left: 0;
+    }
+    .table100.ver1 td {
+        font-size: 13px;
     }
 }
     
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) { 
     .table100.ver1 th {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     .table100 {
         position: relative;
         padding-top: 80px;
+    }
+    .column1 {
+        padding-left: 0;
+    }
+    .table100.ver1 td {
+        font-size: 14px;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .table100.ver1 th {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     .table100 {
         position: relative;
         padding-top: 70px;
+    }
+    .column1 {
+        padding-left: 34px;
+    }
+    .table100.ver1 td {
+        font-size: 15px;
     }
 }
 

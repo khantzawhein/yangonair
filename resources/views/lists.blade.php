@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 <div class="row justify-content-md-center">
-    <div class="col-sm-11">
+    <div class="col-sm-12">
         <div class="table-container mt-4">
             <div class="table100 ver1 m-b-110">
                 <div class="table100-head">
@@ -31,7 +31,7 @@
                             @foreach ($sensorDB as $row)
                             <tr class="row100 body">
                                 <td class="cell100 column1">{{ $row->sensor_name }}</td>
-                                <td class="cell100 column2">{{ ($lang == 'my_MM') ? __('lists.' . $row->township) : $row->township }}<td>
+                                <td class="cell100 column2">{{ ($lang == 'my_MM') ? __('lists.' . $row->township) : $row->township }}</td>
                                 <td class="cell100 column3">{{ $sensorAQI[$loop->index] }}</td>
                                 <td class="cell100 column4">{{ $rawPM[$loop->index]}}</td>
                                 <td class="cell100 column5" style="background-color: {{ $colorcode[$loop->index] }};{{ $colorcode[$loop->index] == ('#ffff00' ?? '#00e400' ?? '#ff7e00') ? 'color: black' : 'color:white'}}">{{ $category[$loop->index]['description'] }}</td>

@@ -15,21 +15,18 @@
   
   .column1 {
     width: 25%;
-    padding-left: 40px;
-  }
+    }
   
   .column2 {
     width: 15%;
   }
   
   .column3 {
-    width: 25%;
-    text-align: center;
+    width: 10%;
   }
   
   .column4 {
-    width: 12%;
-    text-align: center;
+    width: 10%;
   }
   
   .column5 {
@@ -83,8 +80,7 @@
   
   .table100.ver1 td {
     font-family: Lato;
-    font-size: 15px;
-    color: #808080;
+    color: #424242;
     line-height: 1.4;
   }
   
