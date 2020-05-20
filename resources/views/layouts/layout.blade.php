@@ -2,7 +2,11 @@
 <html lang="{{ (session('locale') == 'my_MM') ? 'mm' : 'en' }}">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="The Air Quality Monitoring Website for Yangon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="YangonAQI, Air Quality Yangon, Yangon Air Pollution, Yangon AQI, Air Quality Yangon, Air Quality, Yangon, Air Pollution">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#03A9F4">
     <script src="{{ asset('js/enable-push.js') }}" defer></script>
