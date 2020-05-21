@@ -48,7 +48,7 @@ class FacebookAQIPost extends Notification
     function postWriter($overall) {
         $category = helper::getCategory($overall);
         $timeMM = Carbon::now()->locale('my_MM')->isoFormat('A Oh:Om');
-        $timeEN = Carbon::now()->locale('en')->isoFormat('h:m A');
+        $timeEN = Carbon::now()->locale('en')->isoFormat('h:mm A');
         if ($category['level'] == 0) {
             $DB = FbPostTemplate::where('category', "Good")->where('is_default', true)->first();
             $templateEN = $DB->template_en;
