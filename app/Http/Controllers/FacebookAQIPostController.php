@@ -10,7 +10,7 @@ use App\FbPostTemplate;
 class FacebookAQIPostController extends Controller
 {
     //
-    static function post()
+    public static function post()
     {
         if (!FbPostTemplate::first())
         {
@@ -20,6 +20,13 @@ class FacebookAQIPostController extends Controller
         $aqilatest[0]->notify(new FacebookAQIPost);
         return redirect()->back();
     }
-    
-    
+
+    static function scheduleRun()
+    {
+        $aqilatest = aqitemp::select('overall')->orderBy('id', 'desc')->take(1)->get();
+        $aqilatest[0]->notify(new FacebookAQIPost);
+        return redirect()->back();
+    }
+
+
 }

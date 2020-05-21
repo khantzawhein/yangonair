@@ -120,12 +120,10 @@ class FacebookAQIPost extends Notification
         elseif ($level == 3)
         {
             $image = 'loli_unhealthy.png';
-            $color = array(0,0,0,0.9);
         }
         else
         {
             $image = 'loli_unhealthy.png';
-            $color = array(0,0,0,0.9);
         }
         $this->generateImage($image, $overall, $color, $title_x, $title_y, $text, $align, $text_x, $text_y, $aqi_x, $aqi_y);
     }
@@ -134,7 +132,7 @@ class FacebookAQIPost extends Notification
         $overall = $aqidata->overall;
         $this->ImageLoader($overall);
         $content = $this->postWriter($overall);
-        return (new FacebookPosterPost($content))->withImage('storage/cache/AQIFB.png');
+        return (new FacebookPosterPost($content))->withImage(public_path('/storage/cache/AQIFB.png'));
     }
 
     /**
@@ -165,32 +163,32 @@ class FacebookAQIPost extends Notification
      */
     public function generateImage($image, $overall, $color, int $title_x, int $title_y, string $text, string $align = 'center', int $text_x, int $text_y, int $aqi_x, int $aqi_y): void
     {
-        $img = Image::make("images/{$image}");
+        $img = Image::make(public_path("images/{$image}"));
         $img->text('Air Quality:', $title_x, $title_y, function ($font) use ($color) {
-            $font->file('fonts/Cabin-Bold.ttf');
+            $font->file(public_path('fonts/Cabin-Bold.ttf'));
             $font->size(50);
             $font->color($color);
             $font->align('center');
         });
         $img->text("{$overall} AQI", $aqi_x, $aqi_y, function ($font) use ($color) {
-            $font->file('fonts/Cabin-Bold.ttf');
+            $font->file(public_path('fonts/Cabin-Bold.ttf'));
             $font->size(105);
             $font->color($color);
             $font->align('center');
         });
-        $img->text("Moderate", $text_x, $text_y, function ($font) use ($color, $align) {
-            $font->file('fonts/Cabin-Bold.ttf');
+        $img->text($text, $text_x, $text_y, function ($font) use ($color, $align) {
+            $font->file(public_path('fonts/Cabin-Bold.ttf'));
             $font->size(47);
             $font->color($color);
             $font->align($align);
         });
-        $img->text('YangonAQI', 970, 40, function ($font) use ($color) {
-            $font->file('fonts/Cabin-Bold.ttf');
+        $img->text('YangonAQI', 990, 40, function ($font) use ($color) {
+            $font->file(public_path('fonts/Cabin-Bold.ttf'));
             $font->size(33);
             $font->align('right');
             $font->color($color);
         });
 
-        $img->save('storage/cache/AQIFB.png');
+        $img->save(public_path('storage/cache/AQIFB.png'));
     }
 }

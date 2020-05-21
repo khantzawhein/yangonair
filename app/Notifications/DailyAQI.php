@@ -48,6 +48,6 @@ class DailyAQI extends Notification
             ->icon($imageUrl)
             ->body($category['notification'])
             ->badge('/images/favicon.png')
-            ->data(['url' => $url]);
+            ->data(['url' => 'https://www.yangonaqi.live']);
     }
 }

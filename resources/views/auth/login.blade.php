@@ -3,6 +3,7 @@
 <head>
 	<title>YangonAQI - Login</title>
 	<meta charset="UTF-8">
+	<meta name="robots" content="noindex"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">

@@ -9,7 +9,7 @@ self.addEventListener('push', function (e) {
         var msg = e.data.json();
         url = msg.data.url;
         // console.log(msg)
-        // console.log(url)
+        console.log(url)
         e.waitUntil(self.registration.showNotification(msg.title, {
             body: msg.body,
             icon: msg.icon,
