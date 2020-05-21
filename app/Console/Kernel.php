@@ -36,7 +36,9 @@ class Kernel extends ConsoleKernel
         })->dailyAt('07:30');
         $schedule->call(function () {
             FacebookAQIPostController::post();
-        })->dailyAt('08:00')->dailyAt('12:00')->dailyAt('17:00')->dailyAt('20:00');
+        })->when(function() {
+            return in_array(date('H:i'), ['08:00', '13:00', '20:00']);
+        });
     }
 
     /**
