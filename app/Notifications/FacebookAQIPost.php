@@ -121,6 +121,14 @@ class FacebookAQIPost extends Notification
         {
             $image = 'loli_unhealthy.png';
         }
+        elseif ($level == 4)
+        {
+            $image = 'loli_very_unhealthy.png';
+        }
+        elseif ($level == 5)
+        {
+            $image = 'loli_hazardous.png';
+        }
         else
         {
             $image = 'loli_unhealthy.png';
