@@ -27,7 +27,7 @@ class APIController extends Controller
         ];
     }
     public function getLatest() {
-//        $this->validator();
+        $this->validator();
         $aqitemp = new aqitemp();
         $data = $aqitemp->latestData();
         $imageGen = new ImageGenerator();
