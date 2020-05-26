@@ -30,8 +30,6 @@ class APIController extends Controller
         $this->validator();
         $aqitemp = new aqitemp();
         $data = $aqitemp->latestData();
-        $imageGen = new ImageGenerator();
-        $imageGen->ImageLoader($data->overall);
         return $this->chatfuelJson($data);
 
     }

@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\AppFunctions\ImageGenerator;
+use App\aqitemp;
 use App\Http\Controllers\FacebookAQIPostController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -30,7 +32,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function() {
             SensorDataStore::store();
-        })->everyFiveMinutes();
+            $aqitemp = new aqitemp();
+            $data = $aqitemp->latestData();
+            $imageGen = new ImageGenerator();
+            $imageGen->ImageLoader($data->overall);
+        })->everyMinute();
         $schedule->call(function() {
             PushController::push();
         })->dailyAt('07:30');
