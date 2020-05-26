@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
             $data = $aqitemp->latestData();
             $imageGen = new ImageGenerator();
             $imageGen->ImageLoader($data->overall);
-        })->everyMinute();
+        })->everyFiveMinutes();
         $schedule->call(function() {
             PushController::push();
         })->dailyAt('07:30');
