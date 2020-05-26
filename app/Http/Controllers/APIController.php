@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\aqitemp;
+use App\Imagefilenames;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\AppFunctions\PostWriter;
@@ -11,6 +12,7 @@ class APIController extends Controller
 {
     public function chatfuelJson($data) {
         $text = PostWriter::write($data->overall);
+        $image_db = Imagefilenames::select('filename')->first();
         return [
             "messages" => [
                 ["text" =>"ယခု အချိန်တွင် ရန်ကုန်မြို့ရဲ့ လေထုအရည်အသွေးမှာ {$data->overall} AQI ဖြစ်ပါတယ်။"],
@@ -19,7 +21,7 @@ class APIController extends Controller
                     [
                         "type" => "image",
                         "payload" => [
-                            "url" => url('storage/cache/AQIFB.png')
+                            "url" => url("storage/cache/{$image_db->filename}.png")
                         ]
                     ]
                 ]

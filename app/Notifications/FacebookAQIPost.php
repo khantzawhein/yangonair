@@ -50,9 +50,9 @@ class FacebookAQIPost extends Notification
     {
         $overall = $aqidata->overall;
         $imageGen = new ImageGenerator();
-        $imageGen->ImageLoader($overall);
+        $filename = $imageGen->ImageLoader($overall);
         $content = PostWriter::write($overall);
-        return (new FacebookPosterPost($content))->withImage(public_path('/storage/cache/AQIFB.png'));
+        return (new FacebookPosterPost($content))->withImage(public_path("/storage/cache/{$filename}.png"));
     }
 
     /**

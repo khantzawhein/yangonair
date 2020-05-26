@@ -2,7 +2,10 @@
 
 
 namespace App\AppFunctions;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use App\Imagefilenames;
 
 class ImageGenerator
 {
@@ -57,10 +60,10 @@ class ImageGenerator
         {
             $image = 'loli_unhealthy.png';
         }
-        self::generate($image, $overall, $color, $title_x, $title_y, $text, $align, $text_x, $text_y, $aqi_x, $aqi_y);
+        return $this->generate($image, $overall, $color, $title_x, $title_y, $text, $align, $text_x, $text_y, $aqi_x, $aqi_y);
     }
 
-    public function generate($image, $overall, $color, int $title_x, int $title_y, string $text, string $align = 'center', int $text_x, int $text_y, int $aqi_x, int $aqi_y): void
+    public function generate($image, $overall, $color, int $title_x, int $title_y, string $text, string $align = 'center', int $text_x, int $text_y, int $aqi_x, int $aqi_y): string
     {
         $img = Image::make(public_path("images/{$image}"));
         $img->text('Air Quality:', $title_x, $title_y, function ($font) use ($color) {
@@ -87,7 +90,17 @@ class ImageGenerator
             $font->align('right');
             $font->color($color);
         });
-
-        $img->save(public_path('storage/cache/AQIFB.png'));
+        $filename = Str::random();
+        $image_db = Imagefilenames::select('filename')->first();
+        if ($image_db) {
+            info("Deleted");
+            Storage::disk('public')->delete("cache/{$image_db->filename}.png");
+        }
+        Imagefilenames::updateOrCreate(
+            ['id' => 1],
+            ['filename' => $filename]
+        );
+        $img->save(public_path("storage/cache/{$filename}.png"));
+        return $filename;
     }
 }
