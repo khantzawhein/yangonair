@@ -9,4 +9,10 @@ class aqitemp extends Model
 {
     //
     use Notifiable;
+
+    function latestData() {
+        return $this->latest()->first();
+    }
+
+
 }
