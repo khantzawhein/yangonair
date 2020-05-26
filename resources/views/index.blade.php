@@ -144,9 +144,12 @@
 
 <div class="row">
     <div class="col footer">
-      <p class="footer-text">YangonAQI is a project from students of DUCS and CS50x from Harvard.
+        <p class="footer-text">YangonAQI is a project from students of DUCS and CS50x from Harvard.
         YangonAQI&copy; 2020 | <a href="{{ route('privacy-policy') }}">Privacy Policy</a>
-      </p>
+        </p>
+        <div class="text-center mb-3">
+            <div class="text-center fb-messengermessageus" messenger_app_id="2519788091572073" page_id="106732041037716" color="blue" size="large"></div>
+        </div>
     </div>
   </div>
 
