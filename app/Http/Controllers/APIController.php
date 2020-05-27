@@ -15,7 +15,6 @@ class APIController extends Controller
         $image_db = Imagefilenames::select('filename')->first();
         return [
             "messages" => [
-                ["text" =>"ယခု အချိန်တွင် ရန်ကုန်မြို့ရဲ့ လေထုအရည်အသွေးမှာ {$data->overall} AQI ဖြစ်ပါတယ်။"],
                 ["text" => $text],
                 ["attachment" =>
                     [
