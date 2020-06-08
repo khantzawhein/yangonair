@@ -7,7 +7,7 @@ use App\Imagefilenames;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\AppFunctions\PostWriter;
-use App\AppFunctions\ImageGenerator;
+
 class APIController extends Controller
 {
     public function chatfuelJson($data) {
@@ -39,7 +39,7 @@ class APIController extends Controller
             'key' => 'required|exists:public_apis,api_key'
         ]);
         if ($validator->fails()) {
-            abort(403,'Incorrect API Key');
+                abort(403,'Incorrect API Key');
         }
     }
 }

@@ -15,7 +15,7 @@ class FbSettingsController extends Controller
     function __construct()
     {
         $this->middleware('auth');
-        
+
     }
     public function setDefault(FbPostTemplate $template)
     {
